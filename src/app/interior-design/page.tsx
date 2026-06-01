@@ -1,0 +1,1 @@
+export default function InteriorDesignPage() { return <main className="min-h-screen pt-20" />; }

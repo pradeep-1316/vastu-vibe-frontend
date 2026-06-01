@@ -1,0 +1,1 @@
+export default function TestimonialsPage() { return <main className="min-h-screen pt-20" />; }

@@ -1,0 +1,1 @@
+export default function FAQPage() { return <main className="min-h-screen pt-20" />; }
