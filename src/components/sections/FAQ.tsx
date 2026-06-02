@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Plus } from "lucide-react";
+import Image from "next/image";
 
 const faqs = [
   {
@@ -47,27 +48,40 @@ export default function FAQ() {
   };
 
   return (
-    <section className="section-padding bg-pure-white">
-      <div className="max-w-3xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <span className="text-luxury-gold font-medium text-sm tracking-[0.2em] uppercase">
-            FAQ
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-deep-walnut mt-4 mb-6">
-            Frequently Asked Questions
-          </h2>
-          <div className="w-20 h-0.5 bg-luxury-gold mx-auto" />
-        </motion.div>
+    <section className="bg-pure-white">
+      {/* Banner Section */}
+      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[450px] overflow-hidden">
+        <Image
+          src="/images/banner-image.png"
+          alt="FAQ Banner"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-deep-walnut/60" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <span className="text-luxury-gold font-medium text-sm tracking-[0.2em] uppercase">
+              FAQ
+            </span>
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-pure-white mt-4">
+              Frequently Asked Questions
+            </h1>
+          </motion.div>
+        </div>
+      </div>
 
-        {/* FAQ Items */}
-        <div className="space-y-3">
+      {/* FAQ Content */}
+      <div className="section-padding">
+        <div className="max-w-3xl mx-auto">
+
+          {/* FAQ Items */}
+          <div className="space-y-3">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -113,6 +127,7 @@ export default function FAQ() {
               </AnimatePresence>
             </motion.div>
           ))}
+          </div>
         </div>
       </div>
     </section>

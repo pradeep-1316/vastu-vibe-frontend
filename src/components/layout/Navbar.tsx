@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Search, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -28,15 +29,7 @@ const navItems = [
       { label: "Renovation Solutions", href: "/services/renovation" },
     ],
   },
-  {
-    label: "Portfolio",
-    children: [
-      { label: "All Projects", href: "/projects" },
-      { label: "Interior Design", href: "/projects?cat=interior" },
-      { label: "Furniture", href: "/projects?cat=furniture" },
-      { label: "Commercial", href: "/projects?cat=commercial" },
-    ],
-  },
+  { label: "Portfolio", href: "/projects" },
   { label: "Our Furniture", href: "/furniture" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
@@ -81,21 +74,18 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[72px] lg:h-20">
+        <div className="flex items-center justify-between h-18 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-105"
-              style={{ backgroundColor: isScrolled ? "#3C2A1E" : "#C5A55A" }}
-            >
-              <span className={cn(
-                "font-heading text-base lg:text-lg font-bold",
-                isScrolled ? "text-[#C5A55A]" : "text-[#3C2A1E]"
-              )}>VV</span>
+          <Link href="/" className="flex items-center group shrink-0">
+            <div className="relative w-16 h-16 lg:w-32 lg:h-32 transition-transform duration-300 group-hover:scale-105">
+              <Image
+                src="/images/vastu-vibes-logo.png"
+                alt="Vastu Vibe Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className={cn(
-              "font-heading text-base lg:text-lg font-bold tracking-tight transition-colors duration-300",
-              isScrolled ? "text-[#3C2A1E]" : "text-white"
-            )}>Vastu Vibe</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -130,9 +120,9 @@ export default function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 6 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 mt-1.5 w-56 bg-white rounded-xl shadow-xl border border-[#E8DDD0]/60 py-2 z-50"
+                className="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 w-60 bg-white rounded-xl shadow-xl border border-[#E8DDD0]/60 py-2 z-50"
                       >
-                        <div className="absolute -top-1.5 left-6 w-3 h-3 rotate-45 bg-white border-l border-t border-[#E8DDD0]/60" />
+                        <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-white border-l border-t border-[#E8DDD0]/60" />
                         {item.children.map((child) => (
                           <Link
                             key={child.label}
@@ -166,14 +156,14 @@ export default function Navbar() {
           <div className="flex items-center gap-2 lg:gap-4">
             {/* Phone */}
             <a
-              href="tel:+919999999999"
+              href="tel:+919352665547"
               className={cn(
                 "hidden md:flex items-center gap-2 text-sm font-medium transition-colors duration-200",
                 isScrolled ? "text-[#8B7355] hover:text-[#3C2A1E]" : "text-white/70 hover:text-white"
               )}
             >
               <Phone className="w-4 h-4" />
-              <span>+91 99999 99999</span>
+              <span>+91 93526 65547</span>
             </a>
 
             {/* CTA */}
@@ -238,13 +228,13 @@ export default function Navbar() {
                             transition={{ duration: 0.2 }}
                             className="overflow-hidden"
                           >
-                            <div className="ml-4 pl-3 border-l-2 border-[#C5A55A]/30 space-y-0.5 py-1">
+                            <div className="ml-4 pl-3 border-l-2 border-[#C5A55A]/30 space-y-1 py-1">
                               {item.children.map((child) => (
                                 <Link
                                   key={child.label}
                                   href={child.href}
                                   onClick={() => setMobileOpen(false)}
-                                  className="block px-4 py-2 text-sm text-[#2D2D2D]/60 hover:text-[#C5A55A] transition-colors rounded-lg"
+                                  className="block px-4 py-2.5 text-sm text-[#2D2D2D]/60 hover:text-[#C5A55A] hover:bg-[#F7F3EC]/60 transition-colors rounded-lg"
                                 >
                                   {child.label}
                                 </Link>
@@ -275,11 +265,11 @@ export default function Navbar() {
                   Request a Quote
                 </Link>
                 <a
-                  href="tel:+919999999999"
+                  href="tel:+919352665547"
                   className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl border border-[#3C2A1E]/20 text-[#2D2D2D] font-medium text-sm hover:bg-[#3C2A1E] hover:text-white transition-all"
                 >
                   <Phone className="w-4 h-4" />
-                  +91 99999 99999
+                  +91 93526 65547
                 </a>
               </div>
             </div>
