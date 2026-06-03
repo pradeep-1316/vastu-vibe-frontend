@@ -32,6 +32,7 @@ const categories = ["All", "Living Room", "Bedroom", "Dining", "Office", "Storag
 
 const furnitureItems = [
   {
+    slug: "royal-sheesham-dining-table",
     name: "Royal Sheesham Dining Table",
     category: "Dining",
     image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=2070&auto=format&fit=crop",
@@ -46,6 +47,7 @@ const furnitureItems = [
     seatingCapacity: "6-8 persons",
   },
   {
+    slug: "premium-teak-sofa-set",
     name: "Premium Teak Sofa Set",
     category: "Living Room",
     image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2070&auto=format&fit=crop",
@@ -60,6 +62,7 @@ const furnitureItems = [
     seatingCapacity: "6 persons total",
   },
   {
+    slug: "king-size-bed-with-storage",
     name: "King Size Bed with Storage",
     category: "Bedroom",
     image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=2070&auto=format&fit=crop",
@@ -74,6 +77,7 @@ const furnitureItems = [
     seatingCapacity: "King Size Mattress",
   },
   {
+    slug: "executive-office-desk",
     name: "Executive Office Desk",
     category: "Office",
     image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=2070&auto=format&fit=crop",
@@ -88,6 +92,7 @@ const furnitureItems = [
     seatingCapacity: "Single Executive",
   },
   {
+    slug: "garden-lounge-set",
     name: "Garden Lounge Set",
     category: "Outdoor",
     image: "https://images.unsplash.com/photo-1600210491892-03d54c0aef86?q=80&w=2070&auto=format&fit=crop",
@@ -102,6 +107,7 @@ const furnitureItems = [
     seatingCapacity: "5-6 persons",
   },
   {
+    slug: "sliding-door-wardrobe",
     name: "Sliding Door Wardrobe",
     category: "Storage",
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop",
@@ -116,6 +122,7 @@ const furnitureItems = [
     seatingCapacity: "Full Room Storage",
   },
   {
+    slug: "live-edge-coffee-table",
     name: "Live Edge Coffee Table",
     category: "Living Room",
     image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=80&w=2069&auto=format&fit=crop",
@@ -130,6 +137,7 @@ const furnitureItems = [
     seatingCapacity: "4-6 persons around",
   },
   {
+    slug: "ergonomic-office-chair",
     name: "Ergonomic Office Chair",
     category: "Office",
     image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?q=80&w=2070&auto=format&fit=crop",
@@ -144,6 +152,7 @@ const furnitureItems = [
     seatingCapacity: "Single Person",
   },
   {
+    slug: "8-seater-dining-set",
     name: "8-Seater Dining Set",
     category: "Dining",
     image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=2069&auto=format&fit=crop",
@@ -158,6 +167,7 @@ const furnitureItems = [
     seatingCapacity: "8 persons",
   },
   {
+    slug: "tv-unit-with-bookshelf",
     name: "TV Unit with Bookshelf",
     category: "Living Room",
     image: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?q=80&w=2070&auto=format&fit=crop",
@@ -169,9 +179,10 @@ const furnitureItems = [
     designStyle: "Modern Functional",
     finish: "Warm Sheesham with Matte Finish",
     customization: ["Size", "Shelf Configuration", "Cable Management", "Finish"],
-    seatingCapacity: "TV up to 65\"",
+    seatingCapacity: 'TV up to 65"',
   },
   {
+    slug: "patio-dining-set",
     name: "Patio Dining Set",
     category: "Outdoor",
     image: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2070&auto=format&fit=crop",
@@ -179,13 +190,14 @@ const furnitureItems = [
     description: "4-seater outdoor dining set with umbrella hole.",
     rating: 4.8,
     reviews: 15,
-    dimensions: "Table: 48\" x 36\" | Chairs: 18\" W each",
+    dimensions: 'Table: 48" x 36" | Chairs: 18" W each',
     designStyle: "Outdoor Casual",
     finish: "Weather-resistant Acacia",
     customization: ["Umbrella Hole", "Cushion Color", "Wood Finish", "Size"],
     seatingCapacity: "4 persons",
   },
   {
+    slug: "bedside-table-set",
     name: "Bedside Table Set",
     category: "Bedroom",
     image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=2092&auto=format&fit=crop",
@@ -193,13 +205,14 @@ const furnitureItems = [
     description: "Pair of bedside tables with drawers and open shelf.",
     rating: 4.7,
     reviews: 44,
-    dimensions: "20\" W x 16\" D x 24\" H (Each)",
+    dimensions: '20" W x 16" D x 24" H (Each)',
     designStyle: "Modern Minimalist",
     finish: "Dark Walnut Satin",
     customization: ["Size", "Drawer Configuration", "Finish", "Hardware"],
     seatingCapacity: "Pair of Tables",
   },
   {
+    slug: "study-desk-with-storage",
     name: "Study Desk with Storage",
     category: "Office",
     image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=2070&auto=format&fit=crop",
@@ -207,13 +220,14 @@ const furnitureItems = [
     description: "Compact study desk with built-in shelves and drawer unit.",
     rating: 4.8,
     reviews: 29,
-    dimensions: "48\" W x 24\" D x 36\" H",
+    dimensions: '48" W x 24" D x 36" H',
     designStyle: "Compact Modern",
     finish: "Natural Sheesham with Clear Coat",
     customization: ["Size", "Shelf Layout", "Drawer Side", "Finish"],
     seatingCapacity: "Single Person",
   },
   {
+    slug: "kids-bunk-bed",
     name: "Kids Bunk Bed",
     category: "Kids Room",
     image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=2070&auto=format&fit=crop",
@@ -221,13 +235,14 @@ const furnitureItems = [
     description: "Safe and sturdy bunk bed with ladder and guard rails.",
     rating: 4.9,
     reviews: 18,
-    dimensions: "80\" L x 42\" W x 65\" H",
+    dimensions: '80" L x 42" W x 65" H',
     designStyle: "Kids Fun & Safe",
     finish: "Smooth Sanded with Child-safe Finish",
     customization: ["Color", "Ladder Position", "Guard Rail Style", "Storage Option"],
     seatingCapacity: "2 Single Mattresses",
   },
   {
+    slug: "bookshelf-library-unit",
     name: "Bookshelf Library Unit",
     category: "Storage",
     image: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?q=80&w=2070&auto=format&fit=crop",
@@ -235,13 +250,14 @@ const furnitureItems = [
     description: "Floor-to-ceiling bookshelf with adjustable shelves.",
     rating: 4.8,
     reviews: 26,
-    dimensions: "96\" W x 12\" D x 96\" H (Customizable)",
+    dimensions: '96" W x 12" D x 96" H (Customizable)',
     designStyle: "Library Classic",
     finish: "Warm Oak with Satin Finish",
     customization: ["Size", "Shelf Spacing", "Back Panel", "Finish"],
     seatingCapacity: "Full Wall Storage",
   },
   {
+    slug: "kids-study-table",
     name: "Kids Study Table",
     category: "Kids Room",
     image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=2070&auto=format&fit=crop",
@@ -249,13 +265,14 @@ const furnitureItems = [
     description: "Colorful study table with chair and storage compartments.",
     rating: 4.7,
     reviews: 31,
-    dimensions: "36\" W x 20\" D x 28\" H",
+    dimensions: '36" W x 20" D x 28" H',
     designStyle: "Kids Playful",
     finish: "Child-safe Paint with Natural Wood",
     customization: ["Color Scheme", "Storage Type", "Chair Style", "Size"],
     seatingCapacity: "1-2 Kids",
   },
   {
+    slug: "shoe-rack-cabinet",
     name: "Shoe Rack Cabinet",
     category: "Storage",
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop",
@@ -263,13 +280,14 @@ const furnitureItems = [
     description: "Tilt-out shoe rack with seating area and mirror.",
     rating: 4.6,
     reviews: 42,
-    dimensions: "36\" W x 12\" D x 48\" H",
+    dimensions: '36" W x 12" D x 48" H',
     designStyle: "Entryway Functional",
     finish: "Laminate with Mirror",
     customization: ["Size", "Tilt Mechanism", "Mirror Option", "Finish"],
     seatingCapacity: "12-15 Pairs of Shoes",
   },
   {
+    slug: "accent-console-table",
     name: "Accent Console Table",
     category: "Living Room",
     image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=80&w=2069&auto=format&fit=crop",
@@ -277,7 +295,7 @@ const furnitureItems = [
     description: "Elegant console table with drawers for entryway styling.",
     rating: 4.8,
     reviews: 24,
-    dimensions: "48\" W x 14\" D x 32\" H",
+    dimensions: '48" W x 14" D x 32" H',
     designStyle: "Entryway Elegant",
     finish: "Rich Sheesham with Brass Hardware",
     customization: ["Size", "Drawer Configuration", "Hardware", "Finish"],
@@ -520,11 +538,14 @@ export default function FurniturePage() {
 
                     {/* Hover Actions */}
                     <div className="absolute inset-0 bg-deep-walnut/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                      <button className="w-12 h-12 rounded-full bg-pure-white flex items-center justify-center text-deep-walnut hover:bg-luxury-gold hover:text-pure-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                        <Eye className="w-5 h-5" />
-                      </button>
                       <Link 
-                        href="/contact"
+                        href={`/furniture/${item.slug}`}
+                        className="w-12 h-12 rounded-full bg-pure-white flex items-center justify-center text-deep-walnut hover:bg-luxury-gold hover:text-pure-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
+                      >
+                        <Eye className="w-5 h-5" />
+                      </Link>
+                      <Link 
+                        href={`/contact?product=${encodeURIComponent(item.name)}`}
                         className="w-12 h-12 rounded-full bg-pure-white flex items-center justify-center text-deep-walnut hover:bg-luxury-gold hover:text-pure-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 delay-75"
                       >
                         <ArrowRight className="w-5 h-5" />
@@ -591,12 +612,15 @@ export default function FurniturePage() {
                     </div>
                     
                     <div className="flex items-center justify-between pt-4 border-t border-warm-beige">
-                      <span className="text-xs text-dark-charcoal/50 flex items-center gap-1">
+                      <Link
+                        href={`/furniture/${item.slug}`}
+                        className="text-xs text-dark-charcoal/50 flex items-center gap-1 hover:text-luxury-gold transition-colors"
+                      >
                         <Star className="w-3 h-3 fill-luxury-gold text-luxury-gold" />
                         {item.rating} ({item.reviews} reviews)
-                      </span>
+                      </Link>
                       <Link
-                        href="/contact"
+                        href={`/contact?product=${encodeURIComponent(item.name)}`}
                         className="inline-flex items-center gap-1 text-sm font-medium text-deep-walnut hover:text-luxury-gold transition-colors"
                       >
                         Request Quote

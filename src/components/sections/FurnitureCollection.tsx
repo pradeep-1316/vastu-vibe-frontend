@@ -8,37 +8,37 @@ const categories = [
   {
     title: "Living Room",
     description: "Sofas, coffee tables, entertainment units",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/living-room.png",
     count: "24+ Designs",
   },
   {
     title: "Bedroom",
     description: "Beds, wardrobes, nightstands",
-    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/bedroom.png",
     count: "18+ Designs",
   },
   {
     title: "Dining Room",
     description: "Dining tables, chairs, sideboards",
-    image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/dining-room.png",
     count: "15+ Designs",
   },
   {
     title: "Office Furniture",
     description: "Desks, bookcases, conference tables",
-    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/office-furniture.png",
     count: "20+ Designs",
   },
   {
     title: "Modular Kitchen",
     description: "Custom kitchen cabinets and islands",
-    image: "https://images.unsplash.com/photo-1556909114-44e3e7009e2b?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/modelar-kitchen.png",
     count: "12+ Designs",
   },
   {
     title: "Outdoor & Garden",
     description: "Patio sets, garden benches, planters",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/outdoorand garden.png",
     count: "10+ Designs",
   },
 ];

@@ -5,22 +5,22 @@ import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Play, ChevronDown, Star, Award, Users, Sparkles } from "lucide-react";
 
-// Hero slides with unique furniture images
+// Hero slides with local banner images
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/banner-img-1.png",
     title: "Unique Furniture",
     subtitle: "Crafted For You",
     description: "We create one-of-a-kind furniture pieces tailored to your exact design vision.",
   },
   {
-    image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/banner-img-2.png",
     title: "Handcrafted",
     subtitle: "With Passion",
     description: "Every piece tells a story of master craftsmanship and attention to detail.",
   },
   {
-    image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/banner-img-3.png",
     title: "Premium",
     subtitle: "Wood Collection",
     description: "Finest Sheesham, Teak, Oak, and Walnut woods sourced sustainably.",

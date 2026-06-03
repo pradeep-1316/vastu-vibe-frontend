@@ -8,32 +8,32 @@ const projects = [
   {
     title: "Luxury Villa Interior",
     category: "Interior Design",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/luxury-villa.png",
   },
   {
     title: "Modern Office Workspace",
     category: "Commercial",
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2069&auto=format&fit=crop",
+    image: "/images/modern-office.png",
   },
   {
     title: "Custom Dining Set",
     category: "Furniture",
-    image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/coustom-dining.png",
   },
   {
     title: "Premium Bedroom Suite",
     category: "Furniture",
-    image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/premium-bedroom.png",
   },
   {
     title: "Riverside Cafe Design",
     category: "Interior Design",
-    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop",
+    image: "/images/riverSideCafe.png",
   },
   {
     title: "Executive Office Suite",
     category: "Commercial",
-    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/Executive-Office-Suite.png",
   },
 ];
 
