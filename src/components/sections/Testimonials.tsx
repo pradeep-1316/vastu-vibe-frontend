@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { SectionCaption } from "@/lib/animations";
 
 const testimonials = [
   {
@@ -12,7 +13,6 @@ const testimonials = [
     rating: 5,
     content:
       "Vastu Vibe India transformed our home into a masterpiece. The attention to detail, quality of craftsmanship, and their understanding of our vision was exceptional. Every piece of furniture they created for us is a work of art.",
-    image: null,
   },
   {
     name: "Rajesh Mehta",
@@ -21,7 +21,6 @@ const testimonials = [
     rating: 5,
     content:
       "We commissioned Vastu Vibe India for our office interior design and custom furniture. The result was beyond our expectations. Professional, punctual, and absolutely brilliant in their work. Highly recommended!",
-    image: null,
   },
   {
     name: "Ananya Gupta",
@@ -30,7 +29,6 @@ const testimonials = [
     rating: 5,
     content:
       "As an architect, I have high standards for craftsmanship. Vastu Vibe India exceeded every expectation. Their custom furniture pieces are not just functional – they are sculptural works that elevate any space.",
-    image: null,
   },
   {
     name: "Vikram Singh",
@@ -39,7 +37,6 @@ const testimonials = [
     rating: 5,
     content:
       "The team designed and furnished our entire restaurant. The ambiance they created with custom wooden furniture and thoughtful interior design has received countless compliments from our patrons.",
-    image: null,
   },
   {
     name: "Neha Patel",
@@ -48,152 +45,160 @@ const testimonials = [
     rating: 5,
     content:
       "From our first consultation to the final installation, the experience with Vastu Vibe India was seamless. Our modular kitchen and living room furniture are absolutely stunning. Truly premium quality.",
-    image: null,
   },
 ];
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
 
-  const next = () => {
-    setDirection(1);
-    setCurrent((prev) => (prev + 1) % testimonials.length);
+  const goTo = (index: number) => {
+    setCurrent(index % testimonials.length);
   };
 
-  const prev = () => {
-    setDirection(-1);
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+  const next = () => goTo(current + 1);
+  const prev = () => goTo(current - 1 + testimonials.length);
 
-  const variants = {
-    enter: (direction: number) => ({ x: direction > 0 ? 200 : -200, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (direction: number) => ({ x: direction > 0 ? -200 : 200, opacity: 0 }),
-  };
+  const t = testimonials[current];
 
   return (
-    <section className="section-padding bg-deep-walnut relative overflow-hidden">
-      {/* Decorative Gold Pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='%23C5A55A'/%3E%3C/svg%3E")`,
-          backgroundSize: "60px 60px",
-        }}
-      />
+    <section className="py-12 md:py-16 bg-deep-walnut relative overflow-hidden">
+      {/* Top decorative line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-luxury-gold to-transparent" />
+      <div className="absolute top-[2px] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-luxury-gold/20 to-transparent" />
+      
+      {/* Bottom decorative line */}
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-luxury-gold to-transparent" />
+      <div className="absolute bottom-[2px] left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-luxury-gold/20 to-transparent" />
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <span className="text-luxury-gold font-medium text-sm tracking-[0.2em] uppercase">
+      <div className="max-w-2xl mx-auto px-4 relative z-10">
+        {/* Title area */}
+        <div className="text-center mb-6">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-luxury-gold font-medium text-xs tracking-[0.2em] uppercase block"
+          >
             Testimonials
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-pure-white mt-4 mb-6">
-            What Our Clients Say
-          </h2>
-          <div className="w-20 h-0.5 bg-luxury-gold mx-auto" />
-        </motion.div>
+          </motion.span>
+          <SectionCaption text="Real Stories from Our Happy Clients" />
+        </div>
 
-        {/* Testimonial Carousel */}
+        {/* Testimonial - compact card */}
         <div className="relative">
-          <div className="overflow-hidden min-h-[280px] flex items-center">
-            <AnimatedTestimonial
+          <AnimatePresence mode="wait">
+            <motion.div
               key={current}
-              testimonial={testimonials[current]}
-              variants={variants}
-              custom={direction}
-            />
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={prev}
-              className="w-12 h-12 rounded-full border border-warm-beige/30 flex items-center justify-center text-warm-beige hover:bg-luxury-gold hover:text-deep-walnut hover:border-luxury-gold transition-all duration-300"
-              aria-label="Previous testimonial"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+              <div className="bg-deep-walnut/40 backdrop-blur rounded-xl p-6 border border-luxury-gold/10 shadow-lg">
+                {/* Stars */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                  className="flex gap-1 mb-3"
+                >
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.15 + i * 0.05, type: "spring", stiffness: 400 }}
+                    >
+                      <Star
+                        className={`w-3.5 h-3.5 ${
+                          i < t.rating
+                            ? "fill-luxury-gold text-luxury-gold"
+                            : "text-warm-beige/20"
+                        }`}
+                      />
+                    </motion.div>
+                  ))}
+                </motion.div>
 
-            <div className="flex gap-2">
+                {/* Text */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.25, duration: 0.4 }}
+                  className="text-warm-beige/80 leading-relaxed text-sm md:text-base font-light"
+                >
+                  &ldquo;{t.content}&rdquo;
+                </motion.p>
+
+                {/* Author */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex items-center gap-2.5 mt-4 pt-3 border-t border-luxury-gold/10"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                    className="w-8 h-8 rounded-full bg-gradient-to-br from-luxury-gold to-amber-600 flex items-center justify-center shrink-0"
+                  >
+                    <span className="text-[10px] font-bold text-deep-walnut">
+                      {t.name.split(" ").map(n => n[0]).join("")}
+                    </span>
+                  </motion.div>
+                  <div>
+                    <p className="text-xs font-semibold text-pure-white leading-tight">
+                      {t.name}
+                    </p>
+                    <p className="text-[10px] text-warm-beige/50 leading-tight">
+                      {t.role} &bull; {t.location}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation - compact */}
+          <div className="flex items-center justify-center gap-3 mt-4">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={prev}
+              className="w-7 h-7 rounded-full border border-luxury-gold/20 flex items-center justify-center text-luxury-gold/60 hover:bg-luxury-gold hover:text-deep-walnut transition-all duration-300"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+            </motion.button>
+
+            <div className="flex gap-1.5">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => {
-                    setDirection(index > current ? 1 : -1);
-                    setCurrent(index);
-                  }}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                    index === current
-                      ? "bg-luxury-gold w-8"
-                      : "bg-warm-beige/30 hover:bg-warm-beige/50"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
+                  onClick={() => goTo(index)}
+                >
+                  <span
+                    className={`block rounded-full transition-all duration-400 ${
+                      index === current
+                        ? "w-5 h-1.5 bg-luxury-gold"
+                        : "w-1.5 h-1.5 bg-warm-beige/20 hover:bg-warm-beige/40"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
               onClick={next}
-              className="w-12 h-12 rounded-full border border-warm-beige/30 flex items-center justify-center text-warm-beige hover:bg-luxury-gold hover:text-deep-walnut hover:border-luxury-gold transition-all duration-300"
-              aria-label="Next testimonial"
+              className="w-7 h-7 rounded-full border border-luxury-gold/20 flex items-center justify-center text-luxury-gold/60 hover:bg-luxury-gold hover:text-deep-walnut transition-all duration-300"
             >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </motion.button>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function AnimatedTestimonial({
-  testimonial,
-  variants,
-  custom,
-}: {
-  testimonial: (typeof testimonials)[0];
-  variants: any;
-  custom: number;
-}) {
-  return (
-    <motion.div
-      custom={custom}
-      variants={variants}
-      initial="enter"
-      animate="center"
-      exit="exit"
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="w-full"
-    >
-      <div className="text-center px-4">
-        <Quote className="w-10 h-10 text-luxury-gold/50 mx-auto mb-6" />
-        <p className="text-lg md:text-xl text-warm-beige/90 leading-relaxed mb-8 italic font-light">
-          &ldquo;{testimonial.content}&rdquo;
-        </p>
-
-        <div className="flex items-center justify-center gap-1 mb-4">
-          {Array.from({ length: testimonial.rating }).map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-luxury-gold text-luxury-gold" />
-          ))}
-        </div>
-
-        <div>
-          <p className="font-heading text-lg font-bold text-pure-white">
-            {testimonial.name}
-          </p>
-          <p className="text-sm text-warm-beige/60">
-            {testimonial.role} &middot; {testimonial.location}
-          </p>
-        </div>
-      </div>
-    </motion.div>
   );
 }

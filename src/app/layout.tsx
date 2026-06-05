@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/ui/BackToTop";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
       className={`${playfairDisplay.variable} ${inter.variable}`}
     >
       <body className="min-h-screen flex flex-col font-body antialiased">
+        <ScrollProgress />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

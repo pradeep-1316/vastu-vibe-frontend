@@ -72,18 +72,6 @@ function RevealMask({ children, className = "", delay = 0 }: { children: React.R
   );
 }
 
-// 3. ScrollProgress — fixed top progress bar
-function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
-  return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-[3px] bg-luxury-gold origin-left z-50"
-      style={{ scaleX }}
-    />
-  );
-}
-
 // 4. ParallaxImage — main hero image with scroll-parallax + dots + thumbnails
 function ParallaxImage({
   images,
@@ -317,7 +305,6 @@ export default function FurnitureDetailPage() {
 
   return (
     <main className="min-h-screen bg-cream-ivory overflow-x-hidden">
-      <ScrollProgress />
 
       {/* ============= HERO ============= */}
       <section className="section-padding bg-pure-white relative overflow-hidden">
@@ -380,17 +367,13 @@ export default function FurnitureDetailPage() {
                   <span className="text-sm text-dark-charcoal/60">{item.material}</span>
                 </motion.div>
 
-                {/* Description with reveal-mask wipe */}
-                <RevealMask className="mb-2">
-                  <p className="text-dark-charcoal/70 leading-relaxed text-lg font-medium">
-                    {item.shortDescription}
-                  </p>
-                </RevealMask>
-                <RevealMask className="mb-8" delay={0.2}>
-                  <p className="text-dark-charcoal/60 leading-relaxed text-base">
-                    {item.fullDescription}
-                  </p>
-                </RevealMask>
+                {/* Description */}
+                <p className="text-dark-charcoal/70 leading-relaxed text-lg font-medium mb-2">
+                  {item.shortDescription}
+                </p>
+                <p className="text-dark-charcoal/60 leading-relaxed text-base mb-8">
+                  {item.fullDescription}
+                </p>
 
                 {/* Product Information Grid — staggered card reveal */}
                 <motion.div

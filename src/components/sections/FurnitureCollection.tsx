@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { SectionHeader, StaggerContainer, StaggerItem } from "@/lib/animations";
 
 const categories = [
   {
@@ -47,62 +48,45 @@ export default function FurnitureCollection() {
   return (
     <section className="section-padding bg-cream-ivory">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-luxury-gold font-medium text-sm tracking-[0.2em] uppercase">
-            Our Collection
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-deep-walnut mt-4 mb-6">
-            Furniture Collection
-          </h2>
-          <div className="w-20 h-0.5 bg-luxury-gold mx-auto" />
-          <p className="max-w-2xl mx-auto text-dark-charcoal/70 mt-6 leading-relaxed">
-            Explore our curated collection of handcrafted wooden furniture,
-            designed to bring elegance and functionality to every room.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="Our Collection"
+          title="Furniture Collection"
+          caption="Masterpieces of Indian Craftsmanship"
+        />
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {categories.map((category, index) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{ backgroundImage: `url('${category.image}')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-charcoal/90 via-dark-charcoal/30 to-transparent" />
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {categories.map((category) => (
+            <StaggerItem key={category.title}>
+              <motion.div
+                whileHover={{ y: -8, transition: { type: "spring", stiffness: 300 } }}
+                className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: `url('${category.image}')` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-charcoal/90 via-dark-charcoal/30 to-transparent" />
 
-              <div className="relative h-full flex flex-col justify-end p-6 lg:p-8">
-                <span className="text-xs text-luxury-gold font-medium tracking-wider uppercase mb-2">
-                  {category.count}
-                </span>
-                <h3 className="font-heading text-xl lg:text-2xl font-bold text-pure-white mb-1">
-                  {category.title}
-                </h3>
-                <p className="text-sm text-warm-beige/80 mb-4">
-                  {category.description}
-                </p>
-                <span className="inline-flex items-center gap-1 text-sm text-luxury-gold font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Explore Collection
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </motion.div>
+                <div className="relative h-full flex flex-col justify-end p-6 lg:p-8">
+                  <span className="text-xs text-luxury-gold font-medium tracking-wider uppercase mb-2">
+                    {category.count}
+                  </span>
+                  <h3 className="font-heading text-xl lg:text-2xl font-bold text-pure-white mb-1">
+                    {category.title}
+                  </h3>
+                  <p className="text-sm text-warm-beige/80 mb-4">
+                    {category.description}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-sm text-luxury-gold font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Explore Collection
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* View All CTA */}
         <motion.div

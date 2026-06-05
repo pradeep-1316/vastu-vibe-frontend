@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Home, Building2, Store, Sofa } from "lucide-react";
+import { SectionHeader, StaggerContainer, StaggerItem } from "@/lib/animations";
 
 const services = [
   {
@@ -35,58 +36,46 @@ export default function InteriorDesign() {
   return (
     <section className="section-padding bg-pure-white">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-luxury-gold font-medium text-sm tracking-[0.2em] uppercase">
-            Interior Design
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-deep-walnut mt-4 mb-6">
-            Transforming Spaces Into Experiences
-          </h2>
-          <div className="w-20 h-0.5 bg-luxury-gold mx-auto" />
-          <p className="max-w-2xl mx-auto text-dark-charcoal/70 mt-6 leading-relaxed">
-            From concept to completion, our interior design services bring
-            harmony, functionality, and beauty to every space we touch.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="Interior Design"
+          title="Transforming Spaces Into Experiences"
+          caption="Where Design Meets Functionality"
+        />
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl aspect-[16/9] lg:aspect-[3/2] cursor-pointer"
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{ backgroundImage: `url('${service.image}')` }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-charcoal/90 via-dark-charcoal/40 to-transparent" />
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          {services.map((service) => (
+            <StaggerItem key={service.title}>
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="group relative overflow-hidden rounded-2xl aspect-[16/9] lg:aspect-[3/2] cursor-pointer"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: `url('${service.image}')` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-charcoal/90 via-dark-charcoal/40 to-transparent" />
 
-              <div className="relative h-full flex flex-col justify-end p-6 lg:p-8">
-                <div className="w-12 h-12 rounded-xl bg-luxury-gold/20 backdrop-blur flex items-center justify-center mb-4">
-                  <service.icon className="w-6 h-6 text-luxury-gold" />
+                <div className="relative h-full flex flex-col justify-end p-6 lg:p-8">
+                  <motion.div
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.8 }}
+                    className="w-12 h-12 rounded-xl bg-luxury-gold/20 backdrop-blur flex items-center justify-center mb-4"
+                  >
+                    <service.icon className="w-6 h-6 text-luxury-gold" />
+                  </motion.div>
+                  <h3 className="font-heading text-xl lg:text-2xl font-bold text-pure-white mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-warm-beige/80 max-w-md">
+                    {service.description}
+                  </p>
                 </div>
-                <h3 className="font-heading text-xl lg:text-2xl font-bold text-pure-white mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-warm-beige/80 max-w-md">
-                  {service.description}
-                </p>
-              </div>
-            </motion.div>
+              </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* CTA */}
         <motion.div

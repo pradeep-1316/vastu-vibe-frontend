@@ -350,60 +350,111 @@ export default function FurniturePage() {
 
   return (
     <main className="min-h-screen">
-      {/* Hero Banner Section */}
-      <section className="relative h-[60vh] min-h-[450px] overflow-hidden">
-        <motion.div
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={bannerImage}
-            alt="Custom Furniture Collection"
-            fill
-            className="object-cover"
-            priority
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-deep-walnut/70 via-deep-walnut/50 to-deep-walnut/90" />
-        
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-luxury-gold to-transparent" />
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-luxury-gold to-transparent" />
-        
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="text-center px-4">
+      {/* Hero Banner — Split Layout: Left Caption + Right Video */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-deep-walnut pt-8 md:pt-12 lg:pt-16 pb-16 md:pb-20 lg:pb-24">
+        {/* Decorative gold lines */}
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-luxury-gold/50 to-transparent z-20" />
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-luxury-gold/50 to-transparent z-20" />
+
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.04] z-10"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='%23C5A55A' stroke-width='0.5'/%3E%3C/svg%3E")`,
+            backgroundSize: "80px 80px",
+          }}
+        />
+
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-deep-walnut/90 via-deep-walnut/70 to-deep-walnut/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-charcoal/60 via-transparent to-dark-charcoal/60 z-10" />
+
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[80vh]">
+            {/* ── Left: Caption ── */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-8"
             >
-              <span className="inline-block px-6 py-2 rounded-full bg-luxury-gold/20 border border-luxury-gold/30 text-luxury-gold text-sm font-medium tracking-wider uppercase mb-6">
-                Handcrafted With Love
-              </span>
+              {/* Heading */}
+              <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-pure-white leading-[1.1]">
+                Custom Furniture
+                <br />
+                <span className="bg-gradient-to-r from-luxury-gold via-gold-light to-luxury-gold bg-clip-text text-transparent">
+                  Collection
+                </span>
+              </h1>
+
+              {/* Tagline */}
+              <h2 className="font-heading text-xl sm:text-2xl md:text-3xl text-gold-light/90 font-medium">
+                 Timeless Luxury, Crafted to Inspire
+              </h2>
+
+              {/* Description */}
+              <p className="text-warm-beige/70 leading-relaxed text-base sm:text-lg max-w-xl">
+                From concept to creation, every piece is handcrafted with precision and passion.
+Transforming your vision into timeless furniture that reflects your lifestyle.
+              </p>
+
+              {/* Feature pills */}
+              <div className="flex flex-wrap gap-3 pt-2">
+                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-pure-white/5 border border-pure-white/10 text-warm-beige/80 text-sm">
+                  <TreePine className="w-3.5 h-3.5 text-luxury-gold" />
+                  Luxury Interiors
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-pure-white/5 border border-pure-white/10 text-warm-beige/80 text-sm">
+                  <Hammer className="w-3.5 h-3.5 text-luxury-gold" />
+                  Tailored for You
+                </span>
+                {/* <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-pure-white/5 border border-pure-white/10 text-warm-beige/80 text-sm">
+                  <Shield className="w-3.5 h-3.5 text-luxury-gold" />
+                  5-Year Warranty
+                </span> */}
+              </div>
+
+              {/* Decorative divider */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 1.2, delay: 0.8 }}
+                className="w-24 h-0.5 bg-gradient-to-r from-luxury-gold to-transparent origin-left"
+              />
             </motion.div>
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-heading text-4xl md:text-5xl lg:text-7xl font-bold text-pure-white mb-6"
+
+            {/* ── Right: Video ── */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              className="relative"
             >
-              Custom Furniture
-              <br />
-              <span className="bg-gradient-to-r from-luxury-gold to-gold-light bg-clip-text text-transparent">
-                Collection
-              </span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="max-w-2xl mx-auto text-warm-beige/80 text-lg"
-            >
-              Every piece is handcrafted by master artisans using premium hardwoods. 
-              Your design, our craftsmanship.
-            </motion.p>
+              {/* Glow frame */}
+              <div className="absolute -inset-1 bg-gradient-to-br from-luxury-gold/30 via-transparent to-luxury-gold/20 rounded-3xl blur-sm" />
+
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-luxury-gold/10 border border-pure-white/10 bg-dark-charcoal">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/video/Luxury_coffee_table_floating_space_202606051611.mp4" type="video/mp4" />
+                </video>
+              </div>
+
+              {/* Floating badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="absolute -bottom-4 -right-4 bg-luxury-gold text-deep-walnut text-xs font-bold px-4 py-2 rounded-full shadow-lg"
+              >
+                ✦ AI Visualized
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -436,22 +487,27 @@ export default function FurniturePage() {
       </section>
 
       {/* Main Furniture Section */}
-      <section className="section-padding bg-cream-ivory">
+      <section id="collection" className="section-padding bg-cream-ivory">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <motion.div {...fadeInUp} className="text-center mb-12">
-            <span className="text-luxury-gold font-medium text-sm tracking-[0.2em] uppercase">
+          <motion.div {...fadeInUp} className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-luxury-gold/10 border border-luxury-gold/20 text-luxury-gold text-xs font-medium tracking-wider uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
               Your Design, Our Craftsmanship
+              <span className="w-1.5 h-1.5 rounded-full bg-luxury-gold animate-pulse" />
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-deep-walnut mt-4 mb-6">
-              Unique Furniture For Every Space
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-3 mb-4 overflow-hidden leading-[1.1]">
+              <span className="bg-gradient-to-r from-luxury-gold via-gold-light to-luxury-gold bg-clip-text text-transparent">
+                Unique Furniture For Every Space
+              </span>
             </h2>
-            <div className="w-20 h-1 bg-luxury-gold mx-auto" />
-            <p className="max-w-2xl mx-auto text-dark-charcoal/70 mt-6 leading-relaxed">
-              Every piece in our collection is handcrafted by master artisans using premium 
-              hardwoods. Can't find what you need? We create custom furniture exactly 
-              to your design specifications.
-            </p>
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="w-20 h-1 bg-luxury-gold mx-auto"
+            />
           </motion.div>
 
           {/* Filter & Sort */}

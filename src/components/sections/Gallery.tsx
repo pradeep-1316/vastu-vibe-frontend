@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { SectionHeader, StaggerContainer, StaggerItem } from "@/lib/animations";
 
 // 5 categories × 5 modern luxury images = 25 images
 const galleryImages = [
@@ -57,7 +58,6 @@ export default function Gallery() {
 
   const filtered = useMemo(() => {
     if (activeCategory === "All") {
-      // "All" tab: har category ki sirf pehli image dikhao
       const seen = new Set<string>();
       return galleryImages.filter((img) => {
         if (seen.has(img.category)) return false;
@@ -71,22 +71,11 @@ export default function Gallery() {
   return (
     <section className="section-padding bg-cream-ivory">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <span className="text-luxury-gold font-medium text-sm tracking-[0.2em] uppercase">
-            Gallery
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-deep-walnut mt-4 mb-6">
-            Our Work in Focus
-          </h2>
-          <div className="w-20 h-0.5 bg-luxury-gold mx-auto" />
-        </motion.div>
+        <SectionHeader
+          subtitle="Gallery"
+          title="Our Work in Focus"
+          caption="Browse Through Our Creative Portfolio"
+        />
 
         {/* Category Filters */}
         <motion.div
@@ -97,8 +86,10 @@ export default function Gallery() {
           className="flex flex-wrap justify-center gap-2 mb-10"
         >
           {categories.map((cat) => (
-            <button
+            <motion.button
               key={cat}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveCategory(cat)}
               className={`px-5 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
                 activeCategory === cat
@@ -107,7 +98,7 @@ export default function Gallery() {
               }`}
             >
               {cat}
-            </button>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -122,6 +113,7 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
+                whileHover={{ y: -6 }}
                 onClick={() => setSelectedImage(index)}
                 className="aspect-square rounded-xl overflow-hidden cursor-pointer group relative"
               >

@@ -26,7 +26,7 @@ import { cn } from "@/lib/utils";
 
 // Unique images for Contact page (not used elsewhere)
 const bannerImage = "https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=2069&auto=format&fit=crop";
-const showroomImage = "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2070&auto=format&fit=crop";
+const showroomImage = "/images/vastuVibe.png";
 
 // Contact information
 const contactInfo = [
